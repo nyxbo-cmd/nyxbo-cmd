@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 250" width="100%" height="auto">
+  <defs>
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1">
+        <animate attributeName="stdDeviation" values="2;8;2" dur="2.5s" repeatCount="indefinite"/>
+      </feGaussianBlur>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur2">
+        <animate attributeName="stdDeviation" values="1;4;1" dur="2.5s" repeatCount="indefinite"/>
+      </feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <clipPath id="glitch1">
+      <rect x="0" y="0" width="900" height="250">
+        <animate attributeName="y" values="0;5;-3;0" dur="0.15s" repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+    <clipPath id="glitch2">
+      <rect x="0" y="0" width="900" height="250">
+        <animate attributeName="y" values="0;-4;6;0" dur="0.2s" repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+
+    <style>
+      .flick { animation: flicker 3s infinite; }
+      @keyframes flicker {
+        0%, 19.9%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+        20%, 24%, 55% { opacity: 0; }
+      }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#0d1117"/>
+
+  <!-- Glitch ghost layers -->
+  <g clip-path="url(#glitch1)" opacity="0.8">
+    <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle"
+          font-family="'Courier New', monospace" font-weight="900" font-size="110"
+          fill="#ff00ff" filter="url(#neonGlow)">NYXBO</text>
+  </g>
+  <g clip-path="url(#glitch2)" opacity="0.8">
+    <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle"
+          font-family="'Courier New', monospace" font-weight="900" font-size="110"
+          fill="#00ffff" filter="url(#neonGlow)">NYXBO</text>
+  </g>
+
+  <!-- Main solid text -->
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Courier New', monospace" font-weight="900" font-size="110"
+        fill="#ffffff" filter="url(#neonGlow)" class="flick">NYXBO</text>
+
+  <!-- Subtitle -->
+  <text x="50%" y="72%" dominant-baseline="middle" text-anchor="middle"
+        font-family="monospace" font-size="20" fill="#8b949e" letter-spacing="6">
+    DIGITAL AGENCY
+  </text>
+</svg>
